@@ -86,7 +86,7 @@ For the very same reason, we’re going to exaplain the example for you to ride 
 
 ### 4. Virtual Hosts configurations
 
-First, for each Apache2 Virtual Host, we have to create a cookbook.
+First, for the Apache2 Virtual Hosts, we have to create a cookbook.
 
 // We create our cookbook with apachev2 license, markdown readme file format and specific path for the cookbook
 ```bash
@@ -125,6 +125,7 @@ web_app "example_vhost.com" do
   docroot "/var/www/example_vhost.com"
 end
 ```
+For each Apache2 Virtual Hosts, we have to create a recipe, in this case, in the example_vhost cookbook.
 
 Finally, we must add each Virtual Host recipe to run_list in our node configuration.
 In this case, our run list is:
@@ -139,7 +140,7 @@ In this case, our run list is:
     "recipe[apache2]",
     "recipe[mysql::server]",
     "recipe[chef-rails]",
-    "recipe[example_vhost]"
+    "recipe[example_vhost]" // In this case, we are using recipe[example_vhost::default]
     ],
 ```
 

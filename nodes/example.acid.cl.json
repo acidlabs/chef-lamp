@@ -9,7 +9,8 @@
     "recipe[git]",
     "recipe[apache2]",
     "recipe[mysql::server]",
-    "recipe[chef-rails]"
+    "recipe[chef-rails]",
+    "recipe[example_vhost]"
   ],
 
 // You must define who’s going to be the user(s) you’re going to use for deploy.
