@@ -88,12 +88,13 @@ For the very same reason, we’re going to exaplain the example for you to ride 
 
 First, for the Apache2 Virtual Hosts, we have to create a cookbook.
 
-// We create our cookbook with apachev2 license, markdown readme file format and specific path for the cookbook
+We create our cookbook with apachev2 license, markdown readme file format and specific path for the cookbook
+
 ```bash
-bundle exec knife cookbook create my_vhost -c "My Name" -e "my@email.com" -l apachev2 -r md -o site-cookbooks/
+bundle exec knife cookbook create my_vhost -l apachev2 -r md -o site-cookbooks/
 ```
 
-We will use a template to set a Virtual Host, so we need to include the apache recipe in the previously created site cookbook.
+We will use a template to set a Virtual Host, so we need to include the apache recipe in the previously created site cookbook recipe.
 
 ```ruby
 # sites-cookbook/example_vhost/recipes/default.rb
@@ -118,14 +119,15 @@ We will use a template to set a Virtual Host, so we need to include the apache r
 
 include_recipe "apache2"
 
-# See Apache2 cookbook/templates/default to know all the possible params and template examples.
+# See Apache2 cookbook/templates/default/ to know all the possible params and template examples.
 web_app "example_vhost.com" do
   server_name "example_vhost.com"
   server_aliases ["www.example_vhost.com"] # Is an Array
   docroot "/var/www/example_vhost.com"
+  #template "web_app.conf.erb"
 end
 ```
-For each Apache2 Virtual Hosts, we have to create a recipe, in this case, in the example_vhost cookbook.
+For each Apache2 Virtual Hosts, we have to create a recipe, in this case, in the example_vhost cookbook. The recipes are Ruby files and follow the default.rb example.
 
 Finally, we must add each Virtual Host recipe to run_list in our node configuration.
 In this case, our run list is:
