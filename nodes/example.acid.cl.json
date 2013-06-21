@@ -1,0 +1,40 @@
+{
+// This is the list of the recipes that are going to be cooked.
+  "run_list": [
+    "recipe[sudo]",
+    "recipe[apt]",
+    "recipe[build-essential]",
+    "recipe[ohai]",
+    "recipe[runit]",
+    "recipe[git]",
+    "recipe[apache2]",
+    "recipe[mysql::server]",
+    "recipe[chef-rails]"
+  ],
+
+// You must define who’s going to be the user(s) you’re going to use for deploy.
+  "authorization": {
+    "sudo": {
+      "groups":       ["ubuntu"],
+      "users":        ["ubuntu"],
+      "passwordless": true
+    }
+  },
+
+// You must define the username and password for MySQL.
+  "mysql": {
+    "server_root_password"  : "mysqlrootuserpasswordhere",
+    "server_debian_password": "mysqlrootuserdebianwordhere",
+    "server_repl_password"  : "mysqlrootuserreplwordhere"
+  },
+
+// You must define the server platform. See Apache2 cookbook attributes to know all configuration params.
+  "apache2": {
+    "platform": "ubuntu"
+  }
+
+// Finally, declare all the system packages required by the services and gems you’re using in your apps.
+ //"chef-rails": {
+   //"packages": ["package_name", "package2_name"]
+ //}
+}
