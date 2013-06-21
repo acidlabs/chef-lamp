@@ -95,8 +95,8 @@ bundle exec knife cookbook create my_vhost -c "My Name" -e "my@email.com" -l apa
 
 We will use a template to set a Virtual Host, so we need to include the apache recipe in the previously created site cookbook.
 
-sites-cookbook/example_vhost/recipes/default.rb
 ```ruby
+# sites-cookbook/example_vhost/recipes/default.rb
 #
 # Cookbook Name:: example_vhost
 # Recipe:: default
@@ -126,7 +126,7 @@ web_app "example_vhost.com" do
 end
 ```
 
-Finally, we must add each Virtual Host recipe un the run_list for our node configuration.
+Finally, we must add each Virtual Host recipe to run_list in our node configuration.
 In this case, our run list is:
 ```json
   "run_list": [
