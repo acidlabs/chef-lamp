@@ -68,8 +68,8 @@ For the very same reason, we’re going to exaplain the example for you to ride 
 // You must define the username and password for MySQL.
   "mysql": {
     "server_root_password"  : "mysqlrootuserpasswordhere",
-    "server_debian_password": "mysqlrootuserdebianwordhere",
-    "server_repl_password"  : "mysqlrootuserreplwordhere"
+    "server_debian_password": "mysqlrootuserdebianpasswordhere",
+    "server_repl_password"  : "mysqlrootuserreplpasswordhere"
   },
 
 // You must define the server platform. See Apache2 cookbook attributes to know all configuration params.
